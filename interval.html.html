@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setInterval Example</title>
+</head>
+<body>
+
+<button id="startInterval">Start Interval</button>
+<div id="counter">0</div>
+
+<script>
+    let count = 0;
+    let intervalId;
+
+    document.getElementById('startInterval').onclick = function() {
+        intervalId = setInterval(function() {
+            count++;
+            document.getElementById('counter').innerText = count;
+        }, 1000); // Update every second
+    };
+</script>
+
+</body>
+</html>

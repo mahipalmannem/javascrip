@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setTimeout Example</title>
+</head>
+<body>
+
+<button id="startTimer">Start Timer</button>
+
+<script>
+    document.getElementById('startTimer').onclick = function() {
+        setTimeout(function() {
+            alert('This message appears after 3 seconds!');
+        }, 3000); // 3000 milliseconds = 3 seconds
+    };
+</script>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Form Validation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 50px;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .error {
+      color: red;
+      font-size: 0.9em;
+    }
+    input {
+      padding: 8px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    button {
+      padding: 10px 15px;
+      font-size: 1em;
+    }
+  </style>
+</head>
+<body>
+  <h2>Registration Form</h2>
+  <form id="myForm" novalidate>
+    <div class="form-group">
+      <label for="name">Name:</label><br/>
+      <input type="text" id="name" name="name" />
+      <div id="nameError" class="error"></div>
+    </div>
+    
+    <div class="form-group">
+      <label for="email">Email:</label><br/>
+      <input type="email" id="email" name="email" />
+      <div id="emailError" class="error"></div>
+    </div>
+    
+    <div class="form-group">
+      <label for="password">Password:</label><br/>
+      <input type="password" id="password" name="password" />
+      <div id="passwordError" class="error"></div>
+    </div>
+    
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    const form = document.getElementById('myForm');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      let isValid = true;
+
+      // Clear previous errors
+      document.getElementById('nameError').textContent = '';
+      document.getElementById('emailError').textContent = '';
+      document.getElementById('passwordError').textContent = '';
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+
+      if (name === '') {
+        document.getElementById('nameError').textContent = 'Name is required.';
+        isValid = false;
+      }
+
+      const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+      if (!emailPattern.test(email)) {
+        document.getElementById('emailError').textContent = 'Enter a valid email address.';
+        isValid = false;
+      }
+
+      if (password.length < 6) {
+        document.getElementById('passwordError').textContent = 'Password must be at least 6 characters.';
+        isValid = false;
+      }
+
+      if (isValid) {
+        alert('Form submitted successfully!');
+        form.reset();
+      }
+    });
+  </script>
+</body>
+</html>

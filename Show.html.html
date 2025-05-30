@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Show/Hide Section Demo</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 2rem;
+      background: #f0f4f8;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    button {
+      background-color: #1e90ff;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      padding: 0.7rem 1.2rem;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #0d6efd;
+    }
+    #toggleSection {
+      margin-top: 1.5rem;
+      background: white;
+      padding: 1.5rem 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      max-width: 480px;
+      width: 100%;
+      display: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    #toggleSection.show {
+      display: block;
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Show / Hide Section Demo</h1>
+
+  <button id="toggleBtn" aria-expanded="false" aria-controls="toggleSection">
+    Show Section ▼
+  </button>
+
+  <section id="toggleSection" aria-hidden="true">
+    <h2>Toggleable Content Section</h2>
+    <p>This section appears or disappears when you click the button above. You can use this pattern for dropdowns, modals, or collapsible panels.</p>
+  </section>
+
+  <script>
+    const toggleBtn = document.getElementById('toggleBtn');
+    const toggleSection = document.getElementById('toggleSection');
+
+    toggleBtn.addEventListener('click', () => {
+      const isShown = toggleSection.classList.toggle('show');
+      toggleBtn.setAttribute('aria-expanded', isShown);
+      toggleSection.setAttribute('aria-hidden', !isShown);
+      toggleBtn.textContent = isShown ? 'Hide Section ▲' : 'Show Section ▼';
+    });
+  </script>
+
+</body>
+</html>
+
